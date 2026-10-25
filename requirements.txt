@@ -1,0 +1,33 @@
+# Python 3.8; install torch/torchvision separately for the chosen CUDA runtime.
+torch==2.4.1
+torchvision==0.19.1
+numpy==1.24.4
+pandas==2.0.3
+scipy==1.10.1
+torchmetrics==1.5.2
+pytorch-lightning==1.9.0
+trajdata @ git+https://github.com/jxmmy7777/trajdata.git@95d6895383c277b426e5dbd0e194535dae83efdf
+nuscenes-devkit==1.1.9
+shapely==2.0.7
+h5py==3.11.0
+zarr==2.16.1
+numcodecs==0.12.1
+kornia==0.7.3
+einops==0.8.1
+imageio==2.35.1
+imageio-ffmpeg==0.5.1
+matplotlib==3.7.5
+dill==0.4.0
+pyarrow==17.0.0
+tqdm==4.67.3
+Pillow==9.5.0
+PyYAML==6.0.3
+wandb==0.24.2
+networkx==3.1
+opencv-python==4.10.0.84
+openai==2.2.0
+pytest==7.1.1
+protobuf==5.29.6
+psutil==7.2.2
+seaborn==0.13.2
+geopandas==0.13.2

@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.env
+.env.*
+nuscenes/
+checkpoints/
+outputs/
+build/
+dist/
+
+# Generated experiment artifacts
+results/
+goals/
+*.hdf5
+*.h5
+*.jsonl
+*.mp4
+*.gif

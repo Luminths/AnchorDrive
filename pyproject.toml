@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61,<76", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anchordrive-research"
+version = "0.1.0"
+description = "Language goals and guided SafeSim diffusion for traffic safety testing"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+
+[tool.setuptools.packages.find]
+include = ["tbsim*", "scripts*"]
+
+[tool.setuptools.package-data]
+"tbsim.scene_agent" = ["*.md"]

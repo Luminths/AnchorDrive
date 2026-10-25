@@ -1,0 +1,122 @@
+{
+  "checkpoint": "checkpoints/safesim_fut32/test/run0/checkpoints/iter70000.ckpt",
+  "checkpoint_config": "checkpoints/safesim_fut32/test/run0/config.json",
+  "guidance_names": [
+    "advanchor",
+    "route",
+    "collision",
+    "causecollision"
+  ],
+  "params": {
+    "sampling_mode": "ddim",
+    "sample_step": 2,
+    "n_guide_steps": 10,
+    "num_samples": 20,
+    "inner_lr": 0.05,
+    "inner_beta": 0.5,
+    "scale_grad_by_std": false,
+    "grad_wrt": "clean_control",
+    "multiple_guidance_strategy": "weight_guide",
+    "partial_t": null,
+    "channel_step_max": [
+      0.4,
+      0.05
+    ]
+  },
+  "combine_loss": {
+    "weights": [
+      0.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    "ctrl_weights": [
+      1.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "filter_criterion": "combined",
+    "filter_target": "collision",
+    "ctrl_filter_criterion": "combined",
+    "ctrl_filter_target": "causecollision"
+  },
+  "guidance_overrides": {
+    "causecollision": {
+      "interact_mode": "distance",
+      "contact_objective": "body_gap",
+      "contact_margin_m": 1.0,
+      "loss_scale": 16.0,
+      "interact_dist_thresh": 15.0,
+      "prediction_mode": "ego_plan"
+    },
+    "collision": {
+      "use_current_ego_plan": true,
+      "symmetric_attack_exclusion": true,
+      "loss_timesteps": null,
+      "filter_timesteps": null,
+      "buff_dist": 0.25,
+      "mode": "body_gap",
+      "loss_scale": 2.0
+    },
+    "advanchor": {
+      "normalize_valid_anchors": true
+    }
+  },
+  "diffusion_replan_steps": 10,
+  "ego_replan_interval_s": 0.5,
+  "max_simulation_s": 10.0,
+  "control_projection": true,
+  "anchor_weight_schedule": "original_stage2_case_anchor",
+  "post_anchor_collision_factor": 0.02,
+  "post_anchor_collision_decay_s": 2.0,
+  "post_anchor_collision_start": "stage1_end",
+  "denoising_steps": 50,
+  "ego_model": "idm",
+  "lightweight_native_steps": true,
+  "control_projection_backend": "torch",
+  "control_projection_limits": {
+    "acceleration_min": -4.0,
+    "acceleration_max": 3.0,
+    "jerk_max": 6.0,
+    "yaw_rate_max": 0.5,
+    "yaw_acceleration_max": 0.8,
+    "lateral_acceleration_max": 4.0,
+    "speed_max": 30.0,
+    "curvature_max": 0.15
+  },
+  "compact_final_review": true,
+  "require_contact_before_review": true,
+  "anchor_phase_adaptation": {
+    "max_time_shift_s": 1.0,
+    "max_position_shift_m": 4.0,
+    "interaction_radius_m": 15.0,
+    "full_radius_m": 6.0,
+    "match_radius_m": 5.0
+  },
+  "attacker_guidance_weights": {
+    "advanchor": 5.0,
+    "route": 0.25,
+    "collision": 0.5,
+    "causecollision": 1.0
+  },
+  "road_body_guidance": {
+    "weight": 48.0,
+    "resolution_m": 0.5,
+    "padding_m": 400.0,
+    "margin_m": 0.25
+  },
+  "exclude_initial_collision_pairs": true,
+  "collision_exclusion_attackers_only": true,
+  "evaluation_protocol": "semantic_reviewer",
+  "joint_candidate_selection": {
+    "passes": 2,
+    "collision_weight": 100.0,
+    "margin_m": 0.25
+  },
+  "anchor_cosine_schedule": {
+    "start_weight": 10.0,
+    "end_weight": 3.0,
+    "shape": "cosine"
+  }
+}
