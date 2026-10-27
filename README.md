@@ -103,7 +103,7 @@ The scorer writes `summary.json` and `scene_metrics.csv`, including:
 - Task success and ADV–EGO collision rates over all declared scenes, using saved final-review evidence.
 - ADV–BG and BG–BG collision rates, excluding original vehicle pairs already overlapping initially.
 - Full-body ADV and BG off-road rates against annotated drivable areas with a 0.25 m tolerance. Initially off-road BG vehicles are excluded from the BG denominator.
-- Per-scene ADV maximum speed, acceleration, yaw rate and jerk, averaged over valid trajectories.
+- Per-scene ADV maximum speed, acceleration, yaw rate and jerk, averaged over all scenarios.
 - Three separate raw and normalized Wasserstein distances, using all finite signed samples and a fixed real-reference standard deviation. The SafeSim component and boundary conventions are retained. Scene distances are averaged, rather than pooling generated samples across scenes.
 - Stage wall time, diffusion time, review time and recorded pipeline wall time, with separate coverage counts. Missing times remain null; these scopes must not be substituted for each other.
 
